@@ -17,10 +17,6 @@ export function getAppointmentsForDay(state, day) {
 
 }
 
-
-
-
-
 export function getInterview(state, interview) {
 
   console.log("state = ", state);
@@ -40,5 +36,24 @@ export function getInterview(state, interview) {
   // We found that we need to transform an interview object 
   // with an id representing the interviewer to an object 
   // containing a nested object.
+
+}
+
+export function getInterviewersForDay(state, interviewer) {
+
+  //... returns an array of interviewers for that day
+
+  const filteredDays = state.days.find(x => x.name === interviewer)
+  // console.log("filteredDays", filteredDays)
+
+  const emptyArray = [];
+
+  if (filteredDays) {
+    const y = filteredDays.interviewers.map(id => state.interviewers[id]);
+    // console.log("y = ", y);
+    return y;
+  } else {
+    return emptyArray;
+  }
 
 }
