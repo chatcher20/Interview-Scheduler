@@ -5,8 +5,9 @@ import Empty from "components/Appointment/Empty.js";
 import Show from "components/Appointment/Show.js";
 import Form from "components/Appointment/Form.js";
 import useVisualMode from "hooks/useVisualMode";
-import Status from './Status';
+import Status from "components/Appointment/Status.js";
 import Confirm from "components/Appointment/Confirm.js";
+import Error from "components/Appointment/Error.js";
 
 export default function Appointment(props) {
 
@@ -17,6 +18,8 @@ export default function Appointment(props) {
   const DELETING = "DELETING";
   const CONFIRM = "CONFIRM";
   const EDIT = "EDIT";
+  const ERROR_SAVE = "ERROR_SAVE";
+  const ERROR_DELETE = "ERROR_DELETE";
 
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
 
@@ -26,19 +29,22 @@ export default function Appointment(props) {
       interviewer
     };
     transition(SAVING);
-    props.bookInterview(props.id, interview).then(() => {
-      transition(SHOW);
-    });
+    props.bookInterview(props.id, interview)
+      .then(() => {
+        transition(SHOW);
+      })
+      .catch((error) => transition(ERROR_SAVE, true));
   }
 
-  const cancel = function (id) {
-
-    transition(DELETING);
-
-    props.cancelInterview(props.id).then(() => {
-      transition(EMPTY);
-    });
+  const cancel = function (event) {
+    transition(DELETING, true);
+    props.cancelInterview(props.id)
+      .then(() => {
+        transition(EMPTY);
+      })
+      .catch((error) => transition(ERROR_DELETE, true));
   }
+
 
   return (
     <article className="appointment">
@@ -75,17 +81,30 @@ export default function Appointment(props) {
         />
       )}
       {mode === EDIT && (
-          <Form
-            student={props.interview.student}
-            interviewer={props.interview.interviewer.id}
-            interviewers={props.interviewers}
-            onSave={save}
-            onCancel={back}
-          />
-        )}
+        <Form
+          student={props.interview.student}
+          interviewer={props.interviewer && props.interview.interviewer.id}
+          // {/* Added the props.interviewer && to fix the error of trying to create an appointment without selecting an interviewer reviewed with Gary. */}
+          interviewers={props.interviewers}
+          onSave={save}
+          onCancel={back}
+        />
+      )}
       {mode === DELETING && (
         <Status
           message="Deleting"
+        />
+      )}
+      {mode === ERROR_SAVE && (
+        <Error
+          message={"Could not save appointment"}
+          onClose={() => transition(EMPTY)}
+        />
+      )}
+      {mode === ERROR_DELETE && (
+        <Error
+          message={"Could not cancel appointment"}
+          onClose={() => transition(SHOW)}
         />
       )}
 
