@@ -6,6 +6,18 @@
 
 * This project uses ReactJS on the front-end and Node, Express, PosgreSQL, and Axios on the backend.
 
+
+
+## Interview Scheduler App
+
+![Show Appointments](https://github.com/chatcher20/scheduler/blob/master/public/images/show_appointments.png?raw=true)
+
+![Create Appointment](https://github.com/chatcher20/scheduler/blob/master/public/images/create_appointment.png?raw=true)
+
+![Edit/Delete Appointment](https://github.com/chatcher20/scheduler/blob/master/public/images/edit_delete_appointment.png?raw=true)
+
+
+
 ### Dependencies
 
 - axios
@@ -13,16 +25,6 @@
 - react-test-renderer
 - node-sass
 - cypress
-
-## Interview Scheduler App
-![Homepage](https://github.com/chatcher20/Tweeter/blob/master/docs/Tweeter%20Screenshot%20A.png?raw=true)
-
-![Create Appointment](https://github.com/chatcher20/Tweeter/blob/master/docs/Tweeter%20Screenshot%20B.png?raw=true)
-
-![Edit/Delete Appointment](https://github.com/chatcher20/Tweeter/blob/master/docs/Tweeter%20Screenshot%20B.png?raw=true)
-
-
-
 
 ### Setup
 
