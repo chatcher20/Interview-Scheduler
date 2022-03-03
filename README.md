@@ -6,18 +6,6 @@
 
 * This project uses ReactJS on the front-end and Node, Express, PosgreSQL, and Axios on the backend.
 
-
-
-## Interview Scheduler App
-
-![Show Appointments](https://github.com/chatcher20/scheduler/blob/master/public/images/show_appointments.png?raw=true)
-
-![Create Appointment](https://github.com/chatcher20/scheduler/blob/master/public/images/create_appointment.png?raw=true)
-
-![Edit/Delete Appointment](https://github.com/chatcher20/scheduler/blob/master/public/images/edit_delete_appointment.png?raw=true)
-
-
-
 ### Dependencies
 
 - axios
@@ -32,20 +20,28 @@
 
 * To make bookings and save interviews in a database, a Scheduler API must be installed from https://github.com/lighthouse-labs/scheduler-api and a PosgreSQL database must be created on a local machine.
 
-### Running Webpack Development Server
+#### Running Webpack Development Server
 
 ```sh
 npm start
 ```
 
-### Running Jest Test Framework
+#### Running Jest Test Framework
 
 ```sh
 npm test
 ```
 
-### Running Storybook Visual Testbed
+#### Running Storybook Visual Testbed
 
 ```sh
 npm run storybook
 ```
+
+## Interview Scheduler App
+
+![Show Appointments](https://github.com/chatcher20/scheduler/blob/master/public/images/show_appointments.png?raw=true)
+
+![Create Appointment](https://github.com/chatcher20/scheduler/blob/master/public/images/create_appointment.png?raw=true)
+
+![Edit/Delete Appointment](https://github.com/chatcher20/scheduler/blob/master/public/images/edit_delete_appointment.png?raw=true)
