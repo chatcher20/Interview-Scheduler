@@ -8,6 +8,7 @@ export default function Form(props) {
 
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [error, setError] = useState("");
 
   const reset = function () {
     setStudent("");
@@ -18,6 +19,21 @@ export default function Form(props) {
     reset();
     props.onCancel();
   }
+
+  function validate(name, interviewer) {
+    if (name === "") {
+      setError("Student name cannot be blank");
+      return;
+    } else if (!interviewer) {
+      setError("You must select an interviewer.");
+      return;
+    } else {
+      setError("")
+    }
+    props.onSave(name, interviewer);
+  }
+
+
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -30,8 +46,10 @@ export default function Form(props) {
             placeholder="Enter Student Name"
             value={student}
             onChange={(event) => setStudent(event.target.value)}
+            data-testid="student-name-input"
           />
         </form>
+        <section className="appointment__validation">{error}</section>
         <InterviewerList
           value={interviewer}
           onChange={setInterviewer}
@@ -41,33 +59,10 @@ export default function Form(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm onClick={() => { props.onSave(student, interviewer) }}>Save</Button>
+          <Button confirm onClick={() => { validate(student, interviewer) }}>Save</Button>
         </section>
       </section>
     </main>
   )
 
 }
-
-
-
-
-
-
-
-
-// The Form component should track the following state:
-
-// student:String
-// interviewer:Number
-// The Form component should have the following actions:
-
-// setStudent:Function
-// setInterviewer:Function
-// The Form component should take the following props:
-
-// student:String
-// interviewers:Array
-// interviewer:Number
-// onSave:Function
-// onCancel:Function
