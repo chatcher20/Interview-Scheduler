@@ -41,11 +41,11 @@ export default function useApplicationData() {
     let spot = day.spots;
 
     // If an interview is booked (aka a new appointment therefore appointment id is created), the available spots will decrease
-    if (today === day.name && !increment) {
+    if (today === day.name && !increment && spot !== 0) {
       return spot -= 1
     }
     // If an interview is deleted, the available spots will increase/increment by 1
-    else if (today === day.name && increment === true) {
+    else if (today === day.name && increment) {
       return spot += 1
     }
     // If an interview is edited (but not created or deleted therefore no change in spots available)
