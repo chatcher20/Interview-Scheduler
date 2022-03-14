@@ -83,8 +83,7 @@ export default function Appointment(props) {
       {mode === EDIT && (
         <Form
           student={props.interview.student}
-          interviewer={props.interviewer && props.interview.interviewer.id}
-          // {/* Added the props.interviewer && to fix the error of trying to create an appointment without selecting an interviewer reviewed with Gary. */}
+          interviewer={props.interview.interviewer.id}
           interviewers={props.interviewers}
           onSave={save}
           onCancel={back}
