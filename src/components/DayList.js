@@ -2,7 +2,7 @@ import React from "react";
 import DayListItem from "components/DayListItem";
 
 export default function DayList({days, onChange, value}) {
- 
+
   const daysList = days.map(day =>
     <DayListItem
       key={day.id}

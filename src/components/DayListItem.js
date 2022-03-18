@@ -7,8 +7,8 @@ export default function DayListItem(props) {
   console.log(props);
   
   const dayClass = classNames("day-list__item", {
-    "day-list_item--selected": props.selected,
-    "day-list_item--full": props.spots === 0
+    "day-list__item--selected": props.selected,
+    "day-list__item--full": props.spots === 0
   })
 
   const formatSpots = function(spotCount) {
