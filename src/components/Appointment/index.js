@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "./styles.scss";
 import Header from "components/Appointment/Header.js";
 import Empty from "components/Appointment/Empty.js";
@@ -10,7 +10,6 @@ import Confirm from "components/Appointment/Confirm.js";
 import Error from "components/Appointment/Error.js";
 
 export default function Appointment(props) {
-
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -21,36 +20,37 @@ export default function Appointment(props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
 
-  const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
+  const { mode, transition, back } = useVisualMode(
+    props.interview ? SHOW : EMPTY
+  );
 
   const save = function (name, interviewer, create = true) {
     const interview = {
       student: name,
-      interviewer
+      interviewer,
     };
     transition(SAVING);
-    props.bookInterview(props.id, interview, create)
+    props
+      .bookInterview(props.id, interview, create)
       .then(() => {
         transition(SHOW);
       })
       .catch((error) => transition(ERROR_SAVE, true));
-  }
+  };
 
   const cancel = function (event) {
     transition(DELETING, true);
-    props.cancelInterview(props.id)
+    props
+      .cancelInterview(props.id)
       .then(() => {
         transition(EMPTY);
       })
       .catch((error) => transition(ERROR_DELETE, true));
-  }
-
+  };
 
   return (
     <article className="appointment">
       <Header time={props.time} />
-
-      {/* { props.interview ? <Show student={props.interview.student} interviewer={props.interview.interviewer} /> : <Empty /> } */}
 
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
@@ -68,15 +68,13 @@ export default function Appointment(props) {
           onSave={save}
         />
       )}
-      {mode === SAVING && (
-        <Status
-          message="Saving"
-        />
-      )}
+      {mode === SAVING && <Status message="Saving" />}
       {mode === CONFIRM && (
         <Confirm
           message={"Are you sure you want to delete?"}
-          onCancel={() => { transition(SHOW) }}
+          onCancel={() => {
+            transition(SHOW);
+          }}
           onConfirm={cancel}
         />
       )}
@@ -89,11 +87,7 @@ export default function Appointment(props) {
           onCancel={back}
         />
       )}
-      {mode === DELETING && (
-        <Status
-          message="Deleting"
-        />
-      )}
+      {mode === DELETING && <Status message="Deleting" />}
       {mode === ERROR_SAVE && (
         <Error
           message={"Could not save appointment"}
@@ -106,8 +100,6 @@ export default function Appointment(props) {
           onClose={() => transition(SHOW)}
         />
       )}
-
     </article>
-  )
-
+  );
 }

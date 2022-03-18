@@ -9,7 +9,6 @@ export default function useApplicationData() {
     interviewers: {},
   });
 
-  // The setDay action can be used to set the current day.
   const setDay = (day) => setState({ ...state, day });
 
   useEffect(() => {
@@ -31,8 +30,7 @@ export default function useApplicationData() {
     });
   }, []);
 
-  // We should update the spots when we book or cancel an interview. It should be done in the bookInterview
-  // and cancelInterview functions, and applied in the .then part of the AJAX request.
+  
   // Note: The appointment id is known when an interview is confirmed or canceled by the server.
   const availableSpots = function (today, day, increment) {
     let spot = day.spots;

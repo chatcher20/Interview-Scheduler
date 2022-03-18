@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// The useState hook gives us back an array containing two variables: the currently stored value, and a function to set a new value.
+
 import InterviewerList from "../InterviewerList.js";
 import Button from "../Button.js";
 

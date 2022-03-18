@@ -9,7 +9,6 @@ export default function Show(props) {
         <section className="interviewer">
         <h4 className="text--light">Interviewer</h4>
         <h3 className="text--regular">{props.interviewer && props.interviewer.name}</h3>
-        {/* Added the props.interviewer && to fix the error of trying to create an appointment without selecting an interviewer (reviewed with Gary). */}
         </section>
       </section>
       <section className="appointment__card-right">
