@@ -18,7 +18,7 @@
 
 * Clone, the repository, then install dependencies with `npm install`.
 
-* To make bookings and save interviews in a database, a Scheduler API must be installed from https://github.com/lighthouse-labs/scheduler-api and a PosgreSQL database must be created on a local machine.
+* To make bookings and save interviews in a database, a Scheduler API must be installed from https://github.com/lighthouse-labs/scheduler-api and a PostgreSQL database must be created on a local machine.
 
 #### Running Webpack Development Server
 
